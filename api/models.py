@@ -8,7 +8,6 @@ class Project(models.Model):
   Project models
   '''
     title = models.CharField(max_length=255, blank=True)
-    slug = models.SlugField(max_length=250)
     description = models.CharField(max_length=255, blank=True)
     codeUrl = models.URLField()
     liveDemoUrl = models.URLField()
