@@ -98,7 +98,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'your-db-name',
+        'NAME': 'portfolioProject',
         'ENFORCE_SCHEMA': False,
         'CLIENT': {
             'host': env('HOST')
