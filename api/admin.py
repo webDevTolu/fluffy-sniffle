@@ -1,12 +1,13 @@
 from django.contrib import admin
-from api.models import Project
+from .models import Project
 
 # Register your models here.
 
 
+@admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('name', 'description', 'created_at', 'updated_at')
-    list_filter = ('name', 'created_at', 'updated_at',)
+    list_display = ('title', 'description', 'createdAt', 'updatedAt')
+    list_filter = ('title', 'createdAt', 'updatedAt',)
 
 
-admin.site.register(Project)
+# admin.site.register(Project)
