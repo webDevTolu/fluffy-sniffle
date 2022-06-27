@@ -4,9 +4,10 @@ from urllib3 import Retry
 # from rest_framework import serializers
 from .models import Project
 from .serializers import ProjectSerializer
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
 # Create your views here.
 
@@ -24,6 +25,7 @@ def index(request):
 
 
 @api_view(['GET'])
+@permission_classes([IsAdminUser])
 def project_list(request):
     projects = Project.objects.all()
     serializer = ProjectSerializer(projects, many=True)
@@ -31,6 +33,7 @@ def project_list(request):
 
 
 @api_view(['POST'])
+@permission_classes((IsAuthenticated,))
 def project_add(request):
     serializer = ProjectSerializer(data=request.data)
 
